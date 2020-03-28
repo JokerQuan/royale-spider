@@ -42,8 +42,8 @@ module.exports = {
             /**
              * 圣水数据
              */
-            const avgElixir = decksEles[0].children[5].children[1].children[1].children[2].data.replace(/\n/g, "");
-            const cardCycle = decksEles[0].children[5].children[1].children[3].children[2].data.replace(/\n/g, "").split(" ")[0];
+            const avgElixir = decksEles[i].children[5].children[1].children[1].children[2].data.replace(/\n/g, "");
+            const cardCycle = decksEles[i].children[5].children[1].children[3].children[2].data.replace(/\n/g, "").split(" ")[0];
 
 
             /**
@@ -72,5 +72,33 @@ module.exports = {
         }
 
         return decks;
+    },
+
+    parseCards : ($, body) => {
+        const cards = [];
+        //卡片 container
+        const cardEles = $("div[class='grid_item']");
+
+        // console.log(cardEles[0].attribs["data-usage"]);
+
+        for(let i = 0; i < cardEles.length; i++){
+            const name = cardEles[i].children[3].attribs.href.split("card/")[1];
+            const usagePercent = (+(cardEles[i].attribs["data-usage"]) * 100).toFixed(1);
+            const usageDelta = (+(cardEles[i].attribs["data-delta"])).toFixed(1);
+            const winPercent = (+(cardEles[i].attribs["data-winpercent"])).toFixed(1);
+            const winDelta = (+(cardEles[i].attribs["data-windelta"])).toFixed(1);
+
+            const card = {
+                name,
+                usagePercent,
+                usageDelta,
+                winPercent,
+                winDelta
+            };
+
+            cards.push(card);
+        }
+
+        return cards;
     }
 }
