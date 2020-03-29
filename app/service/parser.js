@@ -100,5 +100,54 @@ module.exports = {
         }
 
         return cards;
+    },
+
+    parseBattles : ($, body) => {
+        const tr = $("tbody")[0].children;
+        const battles = [];
+
+        // console.log(tr[1].children[1].children[2])
+
+        for (let i = 1; i < 40 ; i = i + 2) {
+
+            /**
+             * 图片
+             */
+            const cards = tr[i].children[1].children[1].attribs.id.split("deck_")[1];
+
+            const usage = tr[i].children[1].children[2].data.trim();
+
+            /**
+             * 数据
+             */
+            const crowns = tr[i].children[3].children[0].data,
+                  netWinPercent = tr[i].children[5].children[0].data,
+                  win = tr[i].children[7].children[0].data,
+                  winPercent = tr[i].children[9].children[0].data,
+                  draw = tr[i].children[11].children[0].data,
+                  drawPercent = tr[i].children[13].children[0].data,
+                  loss = tr[i].children[15].children[0].data,
+                  lossPercent = tr[i].children[17].children[0].data,
+                  total = tr[i].children[19].children[0].data;
+                  
+
+            const battle = {
+                cards,
+                usage,
+                crowns,
+                netWinPercent,
+                win,
+                winPercent,
+                draw,
+                drawPercent,
+                loss,
+                lossPercent,
+                total
+            }
+
+            battles.push(battle);
+        }
+
+        return battles;
     }
 }
