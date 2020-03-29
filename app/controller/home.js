@@ -13,8 +13,8 @@ class HomeController extends Controller {
   async cards() {
     const { ctx } = this;
     const {query} = this.ctx;
-    // ctx.body = await ctx.service.cards.list(query.cardTime, query.cardBattleType);
-    ctx.body = require("../service/cards.json");
+    ctx.body = await ctx.service.cards.list(query.cardTime, query.cardBattleType);
+    // ctx.body = require("../service/cards.json");
   }
 
   async battles() {
