@@ -103,11 +103,12 @@ module.exports = {
     },
 
     parseBattles : ($, body) => {
-        if (!$("tbody") || !$("tbody")[0] || !$("tbody")[0].children || $("tbody")[0].children.length <=0){
+        const tbody = $("tbody");
+        if (!tbody || !tbody[0] || !tbody[0].children || tbody[0].children.length <=0){
             return [];
         }
 
-        const tr = $("tbody")[0].children;
+        const tr = tbody[0].children;
 
         if(!tr || tr.length <=0) {
             return [];
@@ -118,6 +119,9 @@ module.exports = {
         // console.log(tr[1].children[1].children[2])
 
         for (let i = 1; i < (tr.length * 2) ; i = i + 2) {
+            console.log(i)
+            
+            console.log(tr[i])
 
             /**
              * 图片
