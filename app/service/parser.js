@@ -103,6 +103,10 @@ module.exports = {
     },
 
     parseBattles : ($, body) => {
+        if (!$("tbody") || !$("tbody")[0] || !$("tbody")[0].children || $("tbody")[0].children.length <=0){
+            return [];
+        }
+
         const tr = $("tbody")[0].children;
         const battles = [];
 
