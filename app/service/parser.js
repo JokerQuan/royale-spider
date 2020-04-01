@@ -121,7 +121,7 @@ module.exports = {
         for (let i = 1; i < (tr.length * 2) ; i = i + 2) {
             console.log(i)
             
-            console.log(tr[i])
+            console.log(tr.length)
 
             /**
              * 图片
