@@ -108,11 +108,16 @@ module.exports = {
         }
 
         const tr = $("tbody")[0].children;
+
+        if(!tr || tr.length <=0) {
+            return [];
+        }
+
         const battles = [];
 
         // console.log(tr[1].children[1].children[2])
 
-        for (let i = 1; i < 40 ; i = i + 2) {
+        for (let i = 1; i < (tr.length * 2) ; i = i + 2) {
 
             /**
              * 图片
