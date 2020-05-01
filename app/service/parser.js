@@ -42,8 +42,8 @@ module.exports = {
             /**
              * 圣水数据
              */
-            const avgElixir = decksEles[i].children[5].children[1].children[1].children[2].data.replace(/\n/g, "");
-            const cardCycle = decksEles[i].children[5].children[1].children[3].children[2].data.replace(/\n/g, "").split(" ")[0];
+            const avgElixir = decksEles[i].children[3].children[1].children[1].children[2].children[1].children[1].children[3].children[2].data.replace(/\n/g, "");
+            const cardCycle = decksEles[i].children[3].children[1].children[1].children[2].children[1].children[3].children[3].children[2].data.replace(/\n/g, "").split(" ")[0];
 
 
             /**
